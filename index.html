@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RewardZone - Earn Points Daily</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash" class="splash-screen">
+        <div class="logo-container">
+            <div class="logo">💎</div>
+            <h1>RewardZone</h1>
+            <p>Earn Real Rewards Daily</p>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app" class="app-container hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="balance-card">
+                <div class="balance-label">Total Points</div>
+                <div id="pointsBalance" class="points-balance">0</div>
+                <div id="streakCounter" class="streak">Streak: 0 days</div>
+            </div>
+            <div class="user-info">
+                <span id="usernameDisplay">Guest</span>
+                <button id="profileBtn" class="nav-btn">👤</button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item active" data-page="dashboard">
+                <span>🏠</span> Home
+            </a>
+            <a href="tasks.html" class="nav-item" data-page="tasks">
+                <span>⭐</span> Earn
+            </a>
+            <a href="#" id="referralBtn" class="nav-item">
+                <span>👥</span> Refer
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span>📊</span> Profile
+            </a>
+        </nav>
+
+        <!-- Dashboard Content -->
+        <main class="dashboard-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="todayPoints">0</div>
+                    <div>Today's Points</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalTasks">0</div>
+                    <div>Tasks Done</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="rankDisplay">#999</div>
+                    <div>Your Rank</div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <button class="action-btn daily-checkin" id="dailyCheckin">
+                    <span>📅</span> Daily Check-in
+                    <small>+10 Points</small>
+                </button>
+                <button class="action-btn lucky-spin" id="luckySpin">
+                    <span>🎰</span> Lucky Spin
+                    <small>Chance to Win Big!</small>
+                </button>
+            </div>
+
+            <div class="recent-activity">
+                <h3>Recent Rewards</h3>
+                <div id="activityList"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification hidden">
+        <span id="notifText"></span>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="main.js"></script>
+    <script src="tasks.js"></script>
+    <script>
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            initApp();
+            showPage('dashboard');
+        });
+    </script>
+</body>
+</html>
