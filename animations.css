@@ -1,0 +1,42 @@
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
+}
+
+.bounce-in { animation: bounceIn 0.6s ease-out; }
+.float { animation: float 3s ease-in-out infinite; }
+.pulse { animation: pulse 2s infinite; }
+
+.task-card.completed {
+    animation: pulse 1s, float 2s infinite;
+    background: linear-gradient(45deg, #4CAF50, #8BC34A);
+    color: white;
+}
+
+.points-flying {
+    position: fixed;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffd700;
+    pointer-events: none;
+    z-index: 1000;
+    animation: pointsFly 2s ease-out forwards;
+}
+
+@keyframes pointsFly {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+}
