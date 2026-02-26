@@ -1,136 +1,295 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Add this to your existing style.css */
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+/* Auth Page Specific */
+.auth-page {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     min-height: 100vh;
-    color: #333;
+    position: relative;
+    overflow: hidden;
 }
 
-.app-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+.bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120,219,255,0.3) 0%, transparent 50%);
+    animation: bgFloat 20s ease-in-out infinite;
 }
 
-/* Header */
-.app-header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    padding: 1rem;
+@keyframes bgFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(1deg); }
+    66% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+.auth-wrapper {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
-.balance-card {
+.auth-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+
+.auth-header {
     text-align: center;
+    margin-bottom: 2rem;
 }
 
-.balance-label { font-size: 0.8rem; color: #666; }
-.points-balance { 
-    font-size: 2rem; 
-    font-weight: 800; 
-    background: linear-gradient(45deg, #ffd700, #ffed4e);
+.logo-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.auth-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin-bottom: 0.5rem;
 }
 
-/* Stats Grid */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1rem;
-    padding: 1.5rem;
+.subtitle {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    font-weight: 400;
 }
 
-.stat-card {
-    background: rgba(255,255,255,0.9);
-    padding: 1.5rem;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.stat-number { font-size: 2rem; font-weight: bold; color: #667eea; }
-
-/* Bottom Navigation */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(20px);
+/* Toggle Buttons */
+.auth-toggle-container {
     display: flex;
-    padding: 0.5rem;
-    box-shadow: 0 -2px 20px rgba(0,0,0,0.1);
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    overflow: hidden;
 }
 
-.nav-item {
+.toggle-btn {
     flex: 1;
-    text-align: center;
-    padding: 0.75rem;
-    text-decoration: none;
-    color: #666;
-    transition: all 0.3s ease;
-}
-
-.nav-item.active, .nav-item:hover {
-    color: #667eea;
-}
-
-/* Cards & Buttons */
-.action-btn, .task-card {
-    background: white;
-    border-radius: 20px;
-    padding: 1.5rem;
-    margin: 1rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 1rem;
     border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.action-btn:hover, .task-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-/* Notification */
-.notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #4CAF50;
+.toggle-btn.active {
+    background: rgba(255,255,255,0.2);
     color: white;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    box-shadow: 0 10px 30px rgba(76,175,80,0.4);
-    z-index: 1000;
 }
 
-/* Splash Screen */
-.splash-screen {
+/* Input Groups */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: rgba(255,255,255,0.5);
+    font-size: 1.2rem;
+    z-index: 2;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 0 3px rgba(255,215,0,0.1);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Buttons */
+.primary-btn {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255,215,0,0.4);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+.primary-btn.loading .btn-text {
+    opacity: 0;
+}
+
+.btn-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.full-width { width: 100%; margin-bottom: 1rem; }
+
+/* Social Buttons */
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.social-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.google-btn { border-color: #4285f4; }
+.google-btn:hover { border-color: #4285f4; background: rgba(66,133,244,0.1); }
+
+.facebook-btn { border-color: #1877f2; }
+.facebook-btn:hover { border-color: #1877f2; background: rgba(24,119,242,0.1); }
+
+/* Auth Footer */
+.auth-footer {
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.auth-footer a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    color: #ffd700;
+}
+
+.auth-footer p {
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.5rem;
+}
+
+.auth-footer p a {
+    color: #ffd700;
+}
+
+/* Form States */
+.auth-form.hidden, .auth-form:not(.active) {
+    display: none;
+}
+
+/* Success Modal */
+.success-modal {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2000;
+    z-index: 10000;
 }
 
-.logo-container .logo {
+.success-content {
+    background: white;
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+.success-icon {
     font-size: 4rem;
     margin-bottom: 1rem;
+}
+
+.success-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.success-content p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
 }
