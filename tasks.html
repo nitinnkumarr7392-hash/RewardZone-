@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earn Tasks - RewardZone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <!-- Header with Back Button -->
+    <header class="tasks-header">
+        <button id="backBtn" class="back-btn">← Back</button>
+        <div class="header-title">
+            <h2>⭐ Earn Points</h2>
+            <div id="taskPoints" class="points-display">0 Today's Points</div>
+        </div>
+    </header>
+
+    <!-- Task Categories -->
+    <div class="task-categories">
+        <button class="category-btn active" data-category="all">All Tasks</button>
+        <button class="category-btn" data-category="video">Videos</button>
+        <button class="category-btn" data-category="app">App Installs</button>
+        <button class="category-btn" data-category="quiz">Quizzes</button>
+        <button class="category-btn" data-category="daily">Daily</button>
+    </div>
+
+    <!-- Tasks List -->
+    <div class="tasks-container">
+        <div id="tasksList" class="tasks-grid">
+            <!-- Tasks will be loaded here by JS -->
+        </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="task-modal hidden">
+        <div class="modal-content">
+            <div id="taskContent"></div>
+            <button id="completeTask" class="complete-btn">Complete Task</button>
+        </div>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="tasks.js"></script>
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initTasksPage();
+            loadTasks();
+        });
+    </script>
+</body>
+</html>
