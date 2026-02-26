@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - RewardZone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <header class="profile-header">
+        <button id="backBtn" class="back-btn">← Back</button>
+        <h1>👤 Profile</h1>
+    </header>
+
+    <main class="profile-content">
+        <!-- User Stats -->
+        <div class="profile-stats">
+            <div class="avatar">
+                <span id="userAvatar">👤</span>
+            </div>
+            <h2 id="profileUsername">Loading...</h2>
+            <div class="profile-points">
+                <span class="points-lg" id="profilePoints">0</span> Points
+            </div>
+            <div class="profile-rank">#999</div>
+        </div>
+
+        <!-- Progress & Streaks -->
+        <div class="progress-section">
+            <div class="progress-item">
+                <label>Streak</label>
+                <div class="streak-display" id="profileStreak">0 days 🔥</div>
+            </div>
+            <div class="progress-item">
+                <label>Tasks Completed</label>
+                <div id="totalTasksProfile">0</div>
+            </div>
+            <div class="progress-item">
+                <label>Level</label>
+                <div id="userLevel">1</div>
+            </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="badges-section">
+            <h3>🏆 Badges</h3>
+            <div id="badgesList" class="badges-grid"></div>
+        </div>
+
+        <!-- Redeem Section -->
+        <div class="redeem-section">
+            <h3>💰 Redeem Points</h3>
+            <div class="redeem-options">
+                <button class="redeem-btn" data-amount="100">100 pts = ₹10</button>
+                <button class="redeem-btn" data-amount="500">500 pts = ₹50</button>
+                <button class="redeem-btn" data-amount="1000">1000 pts = ₹100</button>
+            </div>
+        </div>
+
+        <!-- Activity History -->
+        <div class="history-section">
+            <h3>📜 Recent Activity</h3>
+            <div id="historyList"></div>
+        </div>
+    </main>
+
+    <script src="storage.js"></script>
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProfile();
+        });
+    </script>
+</body>
+</html>
